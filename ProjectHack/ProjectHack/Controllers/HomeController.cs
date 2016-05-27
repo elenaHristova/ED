@@ -23,7 +23,13 @@ namespace ProjectHack.Controllers
             {
                 IsAuthenticated = false;
             }
-			return View(HttpContext.User.Identity.IsAuthenticated);
+
+            ViewBag.IsAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+
+            var viewModels = new AccountInfoViewModel[2];
+            viewModels[0] = new LoginViewModel();
+            viewModels[1] = new RegisterViewModel();
+            return View(viewModels);
 		}
 
 		public ActionResult About()
@@ -33,7 +39,7 @@ namespace ProjectHack.Controllers
 			return View();
 		}
 		[HttpPost]
-		public ActionResult Login(string txtUsername, string txtPassword)
+		public ActionResult Login(LoginViewModel model)
 		{
             bool flag = false;
             int uid = 0;
@@ -41,7 +47,7 @@ namespace ProjectHack.Controllers
 
             foreach (User user in db.Users)
             {
-                if (user.Username == txtUsername && user.Password == txtPassword)
+                if (user.Username == model.Username && user.Password == model.Password)
                 {
                     flag = true;
                     uid = user.UserId;
@@ -51,11 +57,10 @@ namespace ProjectHack.Controllers
             }
             
             FormsAuthentication.SetAuthCookie(currentUser.Username, true);
-            if (flag)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return Index();
+            var viewModels = new AccountInfoViewModel[2];
+            viewModels[0] = new LoginViewModel();
+            viewModels[1] = new RegisterViewModel();
+            return RedirectToAction("Index", "Home", viewModels);
 			//TODO: Implementation
 			
 		}
