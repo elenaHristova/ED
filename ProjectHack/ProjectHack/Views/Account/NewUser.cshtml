@@ -1,4 +1,5 @@
-﻿
+﻿@using ProjectHack.Models;
+@model NewUserViewModel
 @{
     ViewBag.Title = "New user";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,18 +14,17 @@
 				<div class="tab-pane" id="register">
 					@using (Html.BeginForm("SaveNewUser", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 					{
-						@Html.TextBox("txtFullname", "", new { @class = "home-form-item", placeholder = "Full name" })
+						@Html.TextBoxFor(m => m.FullName, new { @class = "home-form-item", placeholder = "Full name" })
 						<br />
-									@Html.TextBox("txtAge", "", new { @class = "home-form-item", placeholder = "Age" })
+						@Html.TextBoxFor(m => m.Age, new { @class = "home-form-item", placeholder = "Age" })
 						<br/>
-						@Html.Label("Male", new { @class = "home-form-checkbox" })
-						
-						@Html.RadioButton("gender", "Male")
+						@Html.RadioButtonFor(m => m.Gender, "Male")
+                        <span style="color:black">Male</span>
 						<br/>
-						@Html.Label("Female", new { @class = "home-form-checkbox" })
-						@Html.RadioButton("gender", "Female")
-							 <br />
-									<input type="submit" class="btn btn-default home-form-submit" value="Save" />
+						@Html.RadioButtonFor(m => m.Gender, "Female")
+                        <span style="color:black">Female</span>
+						<br />
+						<input type="submit" class="btn btn-default home-form-submit" value="Save" />
 					}
 				</div>
 

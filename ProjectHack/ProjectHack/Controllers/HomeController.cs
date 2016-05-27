@@ -66,13 +66,13 @@ namespace ProjectHack.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Register(string txtEmail, string txtUsernameRegister, string txtPasswordRegister)
+		public ActionResult Register(RegisterViewModel model)
 		{
 			bool userExists = false;
 
 			foreach (User user in db.Users)
 			{
-				if (user.Username == txtUsernameRegister)
+				if (user.Username == model.Username)
 				{
 					userExists = true;
 
@@ -80,7 +80,7 @@ namespace ProjectHack.Controllers
 			}
 			if (userExists==false)
 			{
-				User newUser = new User { Username = txtUsernameRegister, Email = txtEmail, Password = txtPasswordRegister };
+				User newUser = new User { Username = model.Username, Email = model.Email, Password = model.Password };
 				db.Users.Add(newUser);
 				db.SaveChanges();
 				FormsAuthentication.SetAuthCookie(newUser.Username,true);
