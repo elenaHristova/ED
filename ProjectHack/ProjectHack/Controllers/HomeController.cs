@@ -23,8 +23,14 @@ namespace ProjectHack.Controllers
             {
                 IsAuthenticated = false;
             }
+
+            ViewBag.IsAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+
+            var viewModels = new AccountInfoViewModel[2];
+            viewModels[0] = new LoginViewModel();
+            viewModels[1] = new RegisterViewModel();
 			ViewBag.Id = Session["uid"];
-			return View(HttpContext.User.Identity.IsAuthenticated);
+			return View(viewModels);
 		}
 
 		public ActionResult About()
@@ -34,7 +40,7 @@ namespace ProjectHack.Controllers
 			return View();
 		}
 		[HttpPost]
-		public ActionResult Login(string txtUsername, string txtPassword)
+		public ActionResult Login(LoginViewModel model)
 		{
             bool flag = false;
             int uid = 0;
@@ -42,7 +48,7 @@ namespace ProjectHack.Controllers
 
             foreach (User user in db.Users)
             {
-                if (user.Username == txtUsername && user.Password == txtPassword)
+                if (user.Username == model.Username && user.Password == model.Password)
                 {
                     flag = true;
                     uid = user.UserId;
@@ -50,23 +56,24 @@ namespace ProjectHack.Controllers
                     break;
                 }
             }
-            if (flag)
-            {
-				FormsAuthentication.SetAuthCookie(currentUser.Username, false);
-	            Session["uid"] = uid;
-				return RedirectToAction("Index", "Home");
-            }
-            return Index();
+			Session["uid"] = uid;
+            FormsAuthentication.SetAuthCookie(currentUser.Username, true);
+            var viewModels = new AccountInfoViewModel[2];
+            viewModels[0] = new LoginViewModel();
+            viewModels[1] = new RegisterViewModel();
+            return RedirectToAction("Index", "Home", viewModels);
+			//TODO: Implementation
+			
 		}
 
 		[HttpPost]
-		public ActionResult Register(string txtEmail, string txtUsernameRegister, string txtPasswordRegister)
+		public ActionResult Register(RegisterViewModel model)
 		{
 			bool userExists = false;
 
 			foreach (User user in db.Users)
 			{
-				if (user.Username == txtUsernameRegister)
+				if (user.Username == model.Username)
 				{
 					userExists = true;
 
@@ -74,7 +81,7 @@ namespace ProjectHack.Controllers
 			}
 			if (userExists==false)
 			{
-				User newUser = new User { Username = txtUsernameRegister, Email = txtEmail, Password = txtPasswordRegister };
+				User newUser = new User { Username = model.Username, Email = model.Email, Password = model.Password };
 				db.Users.Add(newUser);
 				db.SaveChanges();
 				FormsAuthentication.SetAuthCookie(newUser.Username,true);
