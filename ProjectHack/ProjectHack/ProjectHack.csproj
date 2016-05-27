@@ -162,6 +162,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\script.js" />
     <Content Include="Views\Shared\bootstrapAdditional\bower_components\bootstrap-social\.gitignore" />
     <Content Include="Views\Shared\bootstrapAdditional\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Views\Shared\bootstrapAdditional\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -636,6 +637,7 @@
     <Content Include="Views\Shared\mainLayout\js\wow.js" />
     <Content Include="Views\Shared\mainLayout\responsive.css" />
     <Content Include="Views\Shared\mainLayout\style.css" />
+    <Content Include="Views\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

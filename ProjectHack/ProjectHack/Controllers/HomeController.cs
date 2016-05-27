@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectHack.Models;
+using System.Web.Security;
+using System.Security.Principal;
 
 namespace ProjectHack.Controllers
 {
@@ -12,7 +14,16 @@ namespace ProjectHack.Controllers
 		public ProjectHackContext db=new ProjectHackContext();
 		public ActionResult Index()
 		{
-			return View();
+            bool IsAuthenticated = false;
+            try
+            {
+                if (HttpContext.User.Identity.IsAuthenticated == false) ;
+            }
+            catch
+            {
+                IsAuthenticated = false;
+            }
+			return View(HttpContext.User.Identity.IsAuthenticated);
 		}
 
 		public ActionResult About()
@@ -24,23 +35,27 @@ namespace ProjectHack.Controllers
 		[HttpPost]
 		public ActionResult Login(string txtUsername, string txtPassword)
 		{
-			/*bool flag = false;
-			int uid = 0;
+            bool flag = false;
+            int uid = 0;
+            User currentUser = null;
 
-			foreach (User user in db.Users)
-			{
-				if (user.Username == txtUsername && user.Password == txtPassword)
-				{
-					flag = true;
-					//uid = user.UserId;
-				}
-			}
-			Session.Add("uid", uid);
-			if (flag)
-			{
-				return RedirectToAction("Index", "Account");
-			}*/
-			return Index();
+            foreach (User user in db.Users)
+            {
+                if (user.Username == txtUsername && user.Password == txtPassword)
+                {
+                    flag = true;
+                    uid = user.UserId;
+                    currentUser = user;
+                    break;
+                }
+            }
+            
+            FormsAuthentication.SetAuthCookie(currentUser.Username, true);
+            if (flag)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return Index();
 			//TODO: Implementation
 			
 		}
