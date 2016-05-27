@@ -65,10 +65,30 @@ namespace ProjectHack.Controllers
 			
 		}
 
-		public ActionResult Register()
+		[HttpPost]
+		public ActionResult Register(string txtEmail, string txtUsernameRegister, string txtPasswordRegister)
 		{
-			//TODO: Implementation
-			return View();
+			bool userExists = false;
+
+			foreach (User user in db.Users)
+			{
+				if (user.Username == txtUsernameRegister)
+				{
+					userExists = true;
+
+				}
+			}
+			if (userExists==false)
+			{
+				User newUser = new User { Username = txtUsernameRegister, Email = txtEmail, Password = txtPasswordRegister };
+				db.Users.Add(newUser);
+				db.SaveChanges();
+				FormsAuthentication.SetAuthCookie(newUser.Username,true);
+				Session["uid"] = newUser.UserId;
+				return RedirectToAction("NewUser", "Account");
+				//here we will show them the additional info we want
+			}
+			return RedirectToAction("Index");
 		}
 	}
 }

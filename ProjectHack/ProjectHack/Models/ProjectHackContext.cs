@@ -10,6 +10,7 @@ namespace ProjectHack.Models
 	public class ProjectHackContext :DbContext
 	{
 		public DbSet<User> Users { get; set; }
+		public DbSet<PersonalInfo> PersonalInfos { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

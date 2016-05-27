@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using ProjectHack.Models;
 
 namespace ProjectHack.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        ProjectHackContext db=new ProjectHackContext();
+
         public ActionResult Index()
         {
 	        ViewBag.Title = "My profile";
@@ -18,10 +20,22 @@ namespace ProjectHack.Controllers
 
 	    public ActionResult NewUser()
 	    {
-		    return View();
+			return View();
 	    }
-        
-        public ActionResult LogOut()
+
+		[HttpPost]
+
+		public ActionResult SaveNewUser(string txtFullname, string txtAge, string gender)
+		{
+			int age = int.Parse(txtAge);
+			int uid = (int)Session["uid"];
+			PersonalInfo pi= new PersonalInfo(txtFullname,age,gender,uid);
+			db.PersonalInfos.Add(pi);
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
 

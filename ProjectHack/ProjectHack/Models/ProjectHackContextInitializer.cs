@@ -23,6 +23,18 @@ namespace ProjectHack.Models
 				context.Users.Add(user);
 			}
 			context.SaveChanges();
+
+			List<PersonalInfo> pis = new List<PersonalInfo>
+			{
+				new PersonalInfo("Elena Hristova", 18,"female",1),
+				new PersonalInfo("Petur", 19,"male",2),
+				new PersonalInfo("Petya", 20,"female",3)
+			};
+			foreach (var pi in pis)
+			{
+				context.PersonalInfos.Add(pi);
+			}
+			context.SaveChanges();
 		}
 	}
 }
