@@ -24,7 +24,6 @@ namespace ProjectHack.Controllers
 	    }
 
 		[HttpPost]
-
 		public ActionResult SaveNewUser(string txtFullname, string txtAge, string gender)
 		{
 			int age = int.Parse(txtAge);

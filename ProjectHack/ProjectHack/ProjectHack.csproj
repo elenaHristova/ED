@@ -136,15 +136,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605251853397_InitialCreate.cs" />
-    <Compile Include="Migrations\201605251853397_InitialCreate.Designer.cs">
-      <DependentUpon>201605251853397_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605271905052_Added PersonalInfo.cs" />
-    <Compile Include="Migrations\201605271905052_Added PersonalInfo.Designer.cs">
-      <DependentUpon>201605271905052_Added PersonalInfo.cs</DependentUpon>
+    <Compile Include="Migrations\201605272033056_InitialCreate.cs" />
+    <Compile Include="Migrations\201605272033056_InitialCreate.Designer.cs">
+      <DependentUpon>201605272033056_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\PersonalInfo.cs" />
     <Compile Include="Models\ProjectHackContext.cs" />
     <Compile Include="Models\ProjectHackContextInitializer.cs" />
@@ -1001,11 +998,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605251853397_InitialCreate.resx">
-      <DependentUpon>201605251853397_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605271905052_Added PersonalInfo.resx">
-      <DependentUpon>201605271905052_Added PersonalInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605272033056_InitialCreate.resx">
+      <DependentUpon>201605272033056_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
