@@ -15,6 +15,7 @@ namespace ProjectHack.Controllers
         public ActionResult Index()
         {
 	        ViewBag.Title = "My profile";
+	        ViewBag.Id = Session["uid"];
             return View();
         }
 
