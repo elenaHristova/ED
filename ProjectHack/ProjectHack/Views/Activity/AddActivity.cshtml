@@ -1,25 +1,25 @@
 ﻿@model ProjectHack.Models.Category
 
 @{
-    ViewBag.Title = "Add Category";
-    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+	ViewBag.Title = "Add Activity";
+	Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
-<h2>Add Category</h2>
+<h2>Add Activity</h2>
 
-@using (Html.BeginForm("SaveCategory", "Category", FormMethod.Post)) 
+@using (Html.BeginForm("SaveActivity", "Activity", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
+	@Html.AntiForgeryToken()
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8 col-md-offset-2">
 			<div class="form-horizontal">
-				<h4>Custom Category</h4>
+				<h4>Custom Activity</h4>
 				<div class="form-group">
 
 					<div class="col-md-10">
 						@Html.Label("Title")
 						@Html.TextBox("txtTitle")
-						<br/>
+						<br />
 						@Html.Label("Topics")
 						<br />
 						@Html.TextBox("txtTopic")
@@ -27,7 +27,7 @@
 						@Html.TextBox("txtTopic1")
 						<br />
 						@Html.TextBox("txtTopic2")
-						@Html.ValidationMessageFor(model => model.Title, "", new {@class = "text-danger"})
+						@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
 					</div>
 
 				</div>
@@ -43,5 +43,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Back to List", "Index")
 </div>

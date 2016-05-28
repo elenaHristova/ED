@@ -18,5 +18,6 @@ namespace ProjectHack.Models
 		}
 		public int CategoryId { get; set; }
 		public string Title { get; set; }
+		public int TimePeriodInDays { get; set; }
 	}
 }

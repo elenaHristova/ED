@@ -54,7 +54,7 @@ namespace ProjectHack.Controllers
             {
 				FormsAuthentication.SetAuthCookie(currentUser.Username, false);
 	            Session["uid"] = uid;
-				return RedirectToAction("Index", "Home");
+				return RedirectToAction("Index", "Account");
             }
             return Index();
 		}

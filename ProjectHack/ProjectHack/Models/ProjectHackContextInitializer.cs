@@ -8,7 +8,6 @@ namespace ProjectHack.Models
 {
 	public class ProjectHackContextInitializer :DropCreateDatabaseIfModelChanges<ProjectHackContext>
 	{
-		
 		protected override void Seed(ProjectHackContext context)
 		{
 			List<User> users = new List<User>
@@ -36,7 +35,7 @@ namespace ProjectHack.Models
 				context.PersonalInfos.Add(pi);
 			}
 			context.SaveChanges();
-
+			
 			List<Category> categories = new List<Category>()
 			{
 				new Category("Programming"),
