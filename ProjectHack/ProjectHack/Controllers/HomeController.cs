@@ -23,6 +23,7 @@ namespace ProjectHack.Controllers
             {
                 IsAuthenticated = false;
             }
+			ViewBag.Id = Session["uid"];
 			return View(HttpContext.User.Identity.IsAuthenticated);
 		}
 
@@ -49,15 +50,13 @@ namespace ProjectHack.Controllers
                     break;
                 }
             }
-            
-            FormsAuthentication.SetAuthCookie(currentUser.Username, true);
             if (flag)
             {
-                return RedirectToAction("Index", "Home");
+				FormsAuthentication.SetAuthCookie(currentUser.Username, false);
+	            Session["uid"] = uid;
+				return RedirectToAction("Index", "Account");
             }
             return Index();
-			//TODO: Implementation
-			
 		}
 
 		[HttpPost]
