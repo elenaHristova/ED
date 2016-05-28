@@ -9,11 +9,11 @@ using System.Security.Principal;
 
 namespace ProjectHack.Controllers
 {
-	public class HomeController : Controller
-	{
-		public ProjectHackContext db=new ProjectHackContext();
-		public ActionResult Index()
-		{
+    public class HomeController : Controller
+    {
+        public ProjectHackContext db = new ProjectHackContext();
+        public ActionResult Index()
+        {
             bool IsAuthenticated = false;
             try
             {
@@ -29,19 +29,19 @@ namespace ProjectHack.Controllers
             var viewModels = new AccountInfoViewModel[2];
             viewModels[0] = new LoginViewModel();
             viewModels[1] = new RegisterViewModel();
-			ViewBag.Id = Session["uid"];
-			return View(viewModels);
-		}
+            ViewBag.Id = Session["uid"];
+            return View(viewModels);
+        }
 
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
 
-			return View();
-		}
-		[HttpPost]
-		public ActionResult Login(LoginViewModel model)
-		{
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
+        {
             bool flag = false;
             int uid = 0;
             User currentUser = null;
@@ -56,40 +56,40 @@ namespace ProjectHack.Controllers
                     break;
                 }
             }
-			Session["uid"] = uid;
+            Session["uid"] = uid;
             FormsAuthentication.SetAuthCookie(currentUser.Username, true);
             var viewModels = new AccountInfoViewModel[2];
             viewModels[0] = new LoginViewModel();
             viewModels[1] = new RegisterViewModel();
             return RedirectToAction("Index", "Home", viewModels);
-			//TODO: Implementation
-			
-		}
+            //TODO: Implementation
 
-		[HttpPost]
-		public ActionResult Register(RegisterViewModel model)
-		{
-			bool userExists = false;
+        }
 
-			foreach (User user in db.Users)
-			{
-				if (user.Username == model.Username)
-				{
-					userExists = true;
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
+        {
+            bool userExists = false;
 
-				}
-			}
-			if (userExists==false)
-			{
-				User newUser = new User { Username = model.Username, Email = model.Email, Password = model.Password };
-				db.Users.Add(newUser);
-				db.SaveChanges();
-				FormsAuthentication.SetAuthCookie(newUser.Username,true);
-				Session["uid"] = newUser.UserId;
-				return RedirectToAction("NewUser", "Account");
-				//here we will show them the additional info we want
-			}
-			return RedirectToAction("Index");
-		}
-	}
+            foreach (User user in db.Users)
+            {
+                if (user.Username == model.Username)
+                {
+                    userExists = true;
+
+                }
+            }
+            if (userExists == false)
+            {
+                User newUser = new User { Username = model.Username, Email = model.Email, Password = model.Password };
+                db.Users.Add(newUser);
+                db.SaveChanges();
+                FormsAuthentication.SetAuthCookie(newUser.Username, true);
+                Session["uid"] = newUser.UserId;
+                return RedirectToAction("NewUser", "Account");
+                //here we will show them the additional info we want
+            }
+            return RedirectToAction("Index");
+        }
+    }
 }
