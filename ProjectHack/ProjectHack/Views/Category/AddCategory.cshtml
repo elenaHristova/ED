@@ -13,21 +13,22 @@
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8 col-md-offset-2">
 			<div class="form-horizontal">
-				<h4>Custom Category</h4>
+                <h4>Custom Category</h4>
+                @using (Html.BeginForm("SaveCategory", "Account", FormMethod.Post))
+                {
 				<div class="form-group">
 
 					<div class="col-md-10">
+
 						@Html.Label("Title")
 						@Html.TextBox("txtTitle")
-						<br/>
+                            <br />
 						@Html.Label("Topics")
 						<br />
-						@Html.TextBox("txtTopic")
+                            @Html.TextBox("topics", "", new { style = "display: block;" })
+                            <a href="#" onclick="this.parentElement.appendChild(this.previousElementSibling.cloneNode(false))">Press</a>
 						<br />
-						@Html.TextBox("txtTopic1")
-						<br />
-						@Html.TextBox("txtTopic2")
-						@Html.ValidationMessageFor(model => model.Title, "", new {@class = "text-danger"})
+
 					</div>
 
 				</div>
@@ -35,8 +36,10 @@
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-10">
 						<input type="submit" value="Save category" class="btn btn-default" />
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
 					</div>
 				</div>
+                }
 			</div>
 		</div>
 	</div>

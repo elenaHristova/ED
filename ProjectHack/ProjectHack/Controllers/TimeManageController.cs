@@ -14,7 +14,11 @@ namespace ProjectHack.Controllers
 	{
 		public ActionResult Index()
 		{
+<<<<<<< HEAD
 			return View(CategoryElement.GetElementsFromFile(Server.MapPath(@"~/App_Data/Categories.xml"),"Categories","Category"));
+=======
+			return View(CategoryElement.GetElementsFromFile(Server.MapPath(@"~/App_Data/Categories.xml")));
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 		}
 	}
 }

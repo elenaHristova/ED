@@ -73,17 +73,14 @@ namespace ProjectHack.Controllers
 	    }
 
 		[HttpPost]
-        public ActionResult SaveNewUser(NewUserViewModel model)
+        public ActionResult SaveNewUser(string txtFullname, string txtAge, string gender)
 		{
+            int age = int.Parse(txtAge);
 			int uid = (int)Session["uid"];
-            PersonalInfo pi = new PersonalInfo(model.FullName, model.Age, model.Gender, uid);
+            PersonalInfo pi = new PersonalInfo(txtFullname, age, gender, uid);
 			db.PersonalInfos.Add(pi);
 			db.SaveChanges();
-
-            var viewModels = new AccountInfoViewModel[2];
-            viewModels[0] = new LoginViewModel();
-            viewModels[1] = new RegisterViewModel();
-            return RedirectToAction("Index", viewModels);
+            return RedirectToAction("Index");
 		}
 
 		public ActionResult LogOut()

@@ -56,6 +56,7 @@
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 						<div class="clearfix"></div>
+<<<<<<< HEAD
 					</div>
 				</a>
 			</div>
@@ -78,6 +79,76 @@
 						<span class="pull-left">View Details</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 						<div class="clearfix"></div>
+=======
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+<<<<<<< HEAD
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-support fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">13</div>
+							<div>Support Tickets!</div>
+=======
+			<div class="panel panel-yellow">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-shopping-cart fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">124</div>
+							<div>New Orders!</div>
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
+						</div>
+					</div>
+				</div>
+				<a href="#">
+					<div class="panel-footer">
+						<span class="pull-left">View Details</span>
+						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+<<<<<<< HEAD
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- /.row -->
+	<hr />
+	<div class="row">
+
+		<div class="col-md-6">
+			<h3>My Categories</h3>
+			@foreach (var categoryTitle in @Model)
+			{
+				<div class="row">
+					<div class="col-md-3">
+						<a href="/TimeManage/Index">
+							<div class="checkBox">
+								@categoryTitle
+								<svg width="140" height="65" viewBox="0 0 140 65" xmlns="http://www.w3.org/2000/svg">
+									<rect x="10" class="button" width="128.8" height="63.9" />
+									<rect x="0" y="22.5" class="box" width="20" height="20" />
+									<polyline class="checkMark" points="4.5,32.6 8.7,36.8 16.5,29.1" />
+								</svg>
+							</div>
+						</a>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="col-md-6">
+			<h3>My Activities</h3>
+			@foreach (var activityTitle in ViewBag.ActivityTitles)
+=======
 					</div>
 				</a>
 			</div>
@@ -112,32 +183,17 @@
 		<div class="col-md-6">
 			<h3>My Categories</h3>
 			@foreach (var categoryTitle in @Model)
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 			{
 				<div class="row">
 					<div class="col-md-3">
 						<a href="/TimeManage/Index">
 							<div class="checkBox">
-								@categoryTitle
-								<svg width="140" height="65" viewBox="0 0 140 65" xmlns="http://www.w3.org/2000/svg">
-									<rect x="10" class="button" width="128.8" height="63.9" />
-									<rect x="0" y="22.5" class="box" width="20" height="20" />
-									<polyline class="checkMark" points="4.5,32.6 8.7,36.8 16.5,29.1" />
-								</svg>
-							</div>
-						</a>
-					</div>
-				</div>
-			}
-		</div>
-		<div class="col-md-6">
-			<h3>My Activities</h3>
-			@foreach (var activityTitle in ViewBag.ActivityTitles)
-			{
-				<div class="row">
-					<div class="col-md-3">
-						<a href="/TimeManage/Index">
-							<div class="checkBox">
+<<<<<<< HEAD
 								@activityTitle
+=======
+								@categoryTitle
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 								<svg width="140" height="65" viewBox="0 0 140 65" xmlns="http://www.w3.org/2000/svg">
 									<rect x="10" class="button" width="128.8" height="63.9" />
 									<rect x="0" y="22.5" class="box" width="20" height="20" />
@@ -149,6 +205,10 @@
 				</div>
 			}
 		</div>
+<<<<<<< HEAD
+=======
+		<div class="col-md-6"><h3>My Activities</h3></div>
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 
 	</div>
 </div>

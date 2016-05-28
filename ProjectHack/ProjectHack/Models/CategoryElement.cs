@@ -24,7 +24,11 @@ namespace ProjectHack.Models
 			Id = "";
 		}
 
+<<<<<<< HEAD
 		public static List<CategoryElement> GetElementsFromFile(string filePath, string mainItem, string subItem)
+=======
+		public static List<CategoryElement> GetElementsFromFile(string filePath)
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 	    {
 			MainCategory currentCategory = new MainCategory("root","", null);
 			int nestedDepth = 0;
@@ -36,15 +40,25 @@ namespace ProjectHack.Models
 					reader.Read();
 					reader.Read();
 					reader.Read();
+<<<<<<< HEAD
 					while (reader.NodeType != XmlNodeType.EndElement || reader.Name != mainItem)
 					{
 						if (reader.NodeType == XmlNodeType.EndElement && reader.Name == subItem)
+=======
+					while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Categories")
+					{
+						if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Category")
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 						{
 							nestedDepth--;
 							currentCategory = currentCategory.ParentElement;
 						}
 
+<<<<<<< HEAD
 						if (reader.NodeType == XmlNodeType.Element && reader.Name == subItem)
+=======
+						if (reader.NodeType == XmlNodeType.Element && reader.Name == "Category")
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 						{
 							nestedDepth++;
 

@@ -22,7 +22,10 @@ namespace ProjectHack.Models
 		public string Password { get; set; }
 		public string Email { get; set; }
 		public string Categories { get; set; }
+<<<<<<< HEAD
 		public string Activities { get; set; }
+=======
+>>>>>>> 6f69e16ce64f9c2123f548d01c01f33beb50c8e6
 
 	}
 }
